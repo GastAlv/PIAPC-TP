@@ -8,8 +8,11 @@ public class EstadoPersecucion : MonoBehaviour
     private MaquinaDeEstados maquinaDeEstados;
     private ControladorNavMesh controladorNavMesh;
     private ControladorVision controladorVision;
+    private PlayerController playerController;
     private NavMeshAgent _agent;
     private float _time = 0f;
+    
+
 
 
     void Awake()
@@ -30,9 +33,10 @@ public class EstadoPersecucion : MonoBehaviour
     //}
     void OnEnable()
     {
-        Debug.Log("ON ENABLE PERSE" + _time);
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         _agent.speed = 5f;
         _time = 0f;
+        
     }
 
 
@@ -40,13 +44,20 @@ public class EstadoPersecucion : MonoBehaviour
     {
         _time += Time.deltaTime;
 
+        if (playerController.playerIsSafe)
+        {
+            playerController.playerIsSafe = false;
+            maquinaDeEstados.ActivarEstado(maquinaDeEstados.EstadoMerodeador);
+            return;
+            
+        }
 
         if (_time >= 2f)
         {
             
             _time = 0f;
             maquinaDeEstados.ActivarEstado(maquinaDeEstados.EstadoVelocidad);
-            return;
+            
             
         }
         RaycastHit hit;

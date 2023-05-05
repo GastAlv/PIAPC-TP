@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private float horizontalMove;
     private float verticalMove;
     private Vector3 playerInput;
+    public bool playerIsSafe = false;
 
 
     public CharacterController player;
@@ -61,5 +62,24 @@ public class PlayerController : MonoBehaviour
         camRight = camRight.normalized;
 
     }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.name == "Spot Light")
+        {
+            playerIsSafe = true;
+        }
+        else {
+            playerIsSafe = false;
+        }
+        
+    }
+    private void OnTriggerExit(Collider other)
+    {
 
+        if (other.name == "Spot Light")
+        {
+            playerIsSafe = false;
+
+        }
+    }
 }

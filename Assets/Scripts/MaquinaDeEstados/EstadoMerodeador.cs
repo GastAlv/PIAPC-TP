@@ -11,21 +11,13 @@ public class EstadoMerodeador : MonoBehaviour
     private MaquinaDeEstados _maquinaDeEstado;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        _agent = GetComponent<NavMeshAgent>();
-        _maquinaDeEstado = GetComponent<MaquinaDeEstados>();
-        _capsule = transform.Find("Capsule").GetComponent<MeshRenderer>();  
-        _luz = GameObject.Find("GameObject").transform.Find("Spot Light").GetComponent<Light>();
-        
-        _capsule.material.color = Color.white;
-
-
-
-
-    }
+   
     void OnEnable()
     {
+        _maquinaDeEstado = GetComponent<MaquinaDeEstados>();
+        _luz = GameObject.Find("GameObject").transform.Find("Spot Light").GetComponent<Light>();
+        _capsule = transform.Find("Capsule").GetComponent<MeshRenderer>();
+        _capsule.material.color = Color.white;
         _agent = GetComponent<NavMeshAgent>();
         _agent.isStopped = true;
     }

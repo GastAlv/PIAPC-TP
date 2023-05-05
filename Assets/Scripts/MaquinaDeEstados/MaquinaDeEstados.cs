@@ -13,6 +13,8 @@ public class MaquinaDeEstados : MonoBehaviour
     public MonoBehaviour EstadoMerodeador;
     private NavMeshAgent _agent;
     private MonoBehaviour estadoActual;
+   
+
 
 
     void Start()
@@ -31,6 +33,11 @@ public class MaquinaDeEstados : MonoBehaviour
     public MonoBehaviour getEstadoActual { 
         get { return estadoActual; }
         set { estadoActual = value; }
+    }
+
+    public MonoBehaviour getPersecucion
+    {
+        get { return EstadoPersecucion; }
     }
 
 

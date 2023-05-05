@@ -6,7 +6,9 @@ public class LightController : MonoBehaviour
 
 {
     private MaquinaDeEstados maquinaDeEstados;
-    
+    private EstadoPersecucion estadoPersecucion;
+    private EstadoVelocidad estadoVelocidad;
+
     public Light luz;
     public Color color;
 
@@ -23,9 +25,15 @@ public class LightController : MonoBehaviour
         // obtener objeto y luego los componentes.
 
         maquinaDeEstados = GameObject.Find("Enemy").GetComponent<MaquinaDeEstados>();
+        
 
     }
 
+    void OnEnable()
+    {
+        estadoPersecucion = GameObject.Find("Enemy").GetComponent<EstadoPersecucion>();
+        estadoVelocidad = GameObject.Find("Enemy").GetComponent<EstadoVelocidad>();
+    }
     void Update()
     {
 
@@ -41,11 +49,10 @@ public class LightController : MonoBehaviour
             luz.enabled = true;
             tiempoDesdeLuz = 0f;
             tiempoEncendida = 0f;
-            float posX = Random.Range(-8f, 8f);
-            float posZ = Random.Range(-8f, 8f);
-            Debug.Log(posX);
-            Debug.Log(posZ);
-            luz.transform.position = new Vector3(transform.position.x + posX, transform.position.y , transform.position.z + posZ);
+            //float posX = Random.Range(-8f, 8f);
+            //float posZ = Random.Range(-8f, 8f);
+
+            //luz.transform.position = new Vector3(transform.position.x + posX, transform.position.y , transform.position.z + posZ);
 
         }
 
@@ -56,6 +63,8 @@ public class LightController : MonoBehaviour
             tiempoEncendida += Time.deltaTime;
             if (tiempoEncendida >= Random.Range(tiempoEncendidaMin, tiempoEncendidaMax))
             {
+                this.GetComponent<BoxCollider>().enabled = false;
+                luz.color = color;
                 luz.enabled = false;
             }
         }
@@ -63,26 +72,35 @@ public class LightController : MonoBehaviour
         
        
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            this.GetComponent<BoxCollider>().enabled = false;
-            luz.color = color;
-            
-            if (maquinaDeEstados.getEstadoActual == maquinaDeEstados.EstadoPersecucion || maquinaDeEstados.getEstadoActual == maquinaDeEstados.EstadoVelocidad)
-            {
-                maquinaDeEstados.ActivarEstado(maquinaDeEstados.EstadoMerodeador);
-            }
-        }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("Player"))
+    //    {
+    //        this.GetComponent<BoxCollider>().enabled = false;
+    //        luz.color = color;
 
-    }
+
+    //        if (maquinaDeEstados.getEstadoActual == maquinaDeEstados.EstadoPersecucion)
+    //        {
+    //            estadoPersecucion.playerIsSafe = true;
+    //            return;
+
+
+    //        }
+    //        if (maquinaDeEstados.getEstadoActual == maquinaDeEstados.EstadoVelocidad)
+    //        {
+    //            estadoVelocidad.playerIsSafe = true;
+    //            return;
+    //        }
+    //    }
+
+    //}
 
     //private void OnTriggerExit(Collider other)
     //{
 
     //    //luz.color = Color.white;
-        
+
     //    //luz.enabled = false;
     //}
 }

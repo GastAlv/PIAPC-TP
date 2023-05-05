@@ -508,6 +508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff98cafffe2b5b49a4af76f48e22e4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerIsSafe: 0
 --- !u!114 &505427323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -809,6 +810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da21530a80a02d40af440ba2439fd4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerIsSafe: 0
   player: {fileID: 0}
   playerSpeed: 8
   mainCamera: {fileID: 963194227}
