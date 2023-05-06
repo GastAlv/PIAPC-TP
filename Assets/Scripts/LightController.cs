@@ -52,7 +52,7 @@ public class LightController : MonoBehaviour
             //float posX = Random.Range(-8f, 8f);
             //float posZ = Random.Range(-8f, 8f);
 
-            //luz.transform.position = new Vector3(transform.position.x + posX, transform.position.y , transform.position.z + posZ);
+            //luz.transform.position = new Vector3(transform.position.x + posX, transform.position.y, transform.position.z + posZ);
 
         }
 
@@ -72,35 +72,5 @@ public class LightController : MonoBehaviour
         
        
     }
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("Player"))
-    //    {
-    //        this.GetComponent<BoxCollider>().enabled = false;
-    //        luz.color = color;
 
-
-    //        if (maquinaDeEstados.getEstadoActual == maquinaDeEstados.EstadoPersecucion)
-    //        {
-    //            estadoPersecucion.playerIsSafe = true;
-    //            return;
-
-
-    //        }
-    //        if (maquinaDeEstados.getEstadoActual == maquinaDeEstados.EstadoVelocidad)
-    //        {
-    //            estadoVelocidad.playerIsSafe = true;
-    //            return;
-    //        }
-    //    }
-
-    //}
-
-    //private void OnTriggerExit(Collider other)
-    //{
-
-    //    //luz.color = Color.white;
-
-    //    //luz.enabled = false;
-    //}
 }
